@@ -20,20 +20,21 @@ public class ShipmentController {
 
     // get Shipment based on ID.
     @GetMapping("/shipment/{id}")
-    public Shipment getShipmentById(@RequestParam Long orderId, @RequestParam Long userId) {
-        return shipmentService.getShipmentById(orderId, userId);
+    public Shipment getShipmentById(@PathVariable Long id){
+        return shipmentService.getShipmentById(id);
     }
 
     //update shipment
     @PutMapping("/{id}")
-    public Shipment updateShipment(@RequestParam Long orderId, @RequestParam Long userId) {
-        return shipmentService.createShipment(orderId, userId);
-    }
+    public Shipment updateShipment(@PathVariable Long id,@RequestParam Long orderId, @RequestParam Long userId) {
+        return shipmentService.updateShipment(id, orderId, userId);
+    }// Must create options with just id and orderId for when we don't have user id at hand.
+
 
     // delete shipment
     @DeleteMapping("/{id}")
-    public Shipment deleteShipment(@RequestParam Long orderId, @RequestParam Long userId) {
-        return shipmentService.createShipment(orderId, userId);
+    public void deleteShipment(@PathVariable Long id) {
+        shipmentService.deleteShipment(id);
     }
 
 }
