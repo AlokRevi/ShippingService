@@ -36,5 +36,4 @@ public class ShipmentController {
     public void deleteShipment(@PathVariable Long id) {
         shipmentService.deleteShipment(id);
     }
-
 }
